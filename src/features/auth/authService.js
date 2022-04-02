@@ -1,14 +1,21 @@
 import axios from 'axios'
 
-const API_URL = '/api/users/'
+const API_URL = 'http://localhost:8000/api/vendor/addVendor'
 
 // Register user
 const register = async (userData) => {
-  const response = await axios.post(API_URL, userData)
-
-  if (response.data) {
-    localStorage.setItem('user', JSON.stringify(response.data))
+  console.log(userData)
+  const response = await axios.post(API_URL, 
+    {
+      "name":"Arvirtd Mishra",
+      "email":"arvindd@gmai.com",
+      "phone":"9917380398",
+      "password":"password00@"
   }
+   
+    )
+
+    console.log(response.data)
 
   return response.data
 }

@@ -30,7 +30,7 @@ function Register() {
 
   useEffect( () => {
     if(isError){
-      toast.error(message)
+      toast.error(register.message)
     }
     if(isSuccess){
       navigate('/pickup-address')
@@ -38,7 +38,7 @@ function Register() {
 
     dispatch(reset())
 
-  }, [user, isError,  isSuccess, message, navigate, dispatch])
+  }, [user, isError,  isSuccess, register.message, navigate, dispatch])
   
 
   const onChange = (e) => {
@@ -56,13 +56,10 @@ function Register() {
        password
      }
 
-     dispatch(userData())
+     dispatch(register(userData))
   }
 
-  // const checkInput = (e) => {
-  //   const onlyDigits = e.target.value.replace(/\D/g, "");
-  //   setNumber(onlyDigits);
-  // };
+  
 
   if(isLoading){
     return <Spinner />
@@ -138,7 +135,7 @@ function Register() {
                     </p>
                   </div>
                   <div class="btn">
-                    <input type="submit" value="Sign Up" />
+                    <input type="submit" value="Sign Up" onSubmit={onSubmit} />
                   </div>
                   <div>
                     <p>
